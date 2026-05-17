@@ -1,0 +1,83 @@
+[project]
+site_name = "RuleX"
+site_url = "https://docs.rulex.coverstack.in"
+site_description = "Documentation for RuleX by Coverstack"
+site_author = "Coverstack"
+copyright = "&copy; 2026 Coverstack Technologies Pvt Ltd"
+docs_dir = "docs"
+nav = [
+    {"Getting Started" = [
+        {"Overview" = "index.md"},
+        {"Full Access Features" = "full-access-features.md"}
+    ]},
+    {"Core Concepts" = [
+        {"Organisation" = "concepts/organisation.md"},
+        {"Data Sources" = "concepts/data-sources.md"},
+        {"Endpoint Schemas" = "concepts/endpoint-schemas.md"},
+        {"Endpoints" = "concepts/endpoints.md"}
+    ]},
+    {"Team Management" = "team-management.md"},
+    {"Configuring Endpoints" = [
+        {"JSON API Mode" = "configuring/json-api-mode.md"},
+        {"API Config" = "configuring/api-config.md"},
+        {"Web Form Mode" = "configuring/web-form-mode.md"},
+        {"Web Form Themes" = "configuring/web-form-themes.md"},
+        {"Web Form Credentials" = "configuring/web-form-credentials.md"}
+    ]},
+    {"Fixed Inputs" = "fixed-inputs.md"},
+    {"Endpoint Tests" = "endpoint-tests.md"},
+    {"Self-Hosting" = [
+        {"Exporting Endpoints" = "self-hosting/exporting-endpoints.md"},
+        {"Running the Server" = "self-hosting/running-the-server.md"}
+    ]},
+    {"Reference" = [
+        {"Supported Formulas" = "reference/supported-formulas.md"},
+        {"Excel Compatibility" = "reference/excel-compatibility.md"},
+        {"Data Validations" = "reference/data-validations.md"},
+        {"Formula Errors" = "reference/formula-errors.md"},
+        {"Type Casting" = "reference/type-casting.md"}
+    ]}
+]
+
+[project.extra.status]
+paid = "Full access feature"
+
+[[project.extra.social]]
+icon = "fontawesome/brands/github"
+link = "https://github.com/coverstack/"
+
+[[project.extra.social]]
+icon = "fontawesome/brands/linkedin"
+link = "https://www.linkedin.com/company/coverstack/"
+
+[project.theme]
+features = [
+#    "navigation.sections",
+    "navigation.path",
+    "navigation.expand",
+    "navigation.instant",
+    "navigation.instant.progress",
+    "navigation.footer",
+    "navigation.top",
+    "toc.follow",
+]
+
+# Palette toggle for light mode
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+# Palette toggle for dark mode
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to light mode"
+
+[project.markdown_extensions.admonition]
+[project.markdown_extensions.pymdownx.details]
+[project.markdown_extensions.pymdownx.superfences]
+[project.markdown_extensions.zensical.extensions.glightbox]
+auto_themed = true
