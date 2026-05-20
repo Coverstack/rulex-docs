@@ -82,3 +82,7 @@ toggle.name = "Switch to light mode"
 [project.markdown_extensions.pymdownx.superfences]
 [project.markdown_extensions.zensical.extensions.glightbox]
 auto_themed = true
+
+[project.markdown_extensions.zensical.extensions.macros]
+render_by_default = false
+on_error_fail = true
