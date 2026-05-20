@@ -5,6 +5,7 @@ site_description = "Documentation for RuleX by Coverstack"
 site_author = "Coverstack"
 copyright = "&copy; 2026 Coverstack Technologies Pvt Ltd"
 docs_dir = "docs"
+extra_css = ["stylesheets/extra.css"]
 nav = [
     {"Getting Started" = [
         {"Overview" = "index.md"},
@@ -26,6 +27,7 @@ nav = [
     ]},
     {"Fixed Inputs" = "fixed-inputs.md"},
     {"Endpoint Tests" = "endpoint-tests.md"},
+    {"Architecture" = "architecture.md"},
     {"Self-Hosting" = [
         {"Exporting Endpoints" = "self-hosting/exporting-endpoints.md"},
         {"Running the Server" = "self-hosting/running-the-server.md"}
@@ -52,9 +54,7 @@ link = "https://www.linkedin.com/company/coverstack/"
 
 [project.theme]
 features = [
-#    "navigation.sections",
     "navigation.path",
-    "navigation.expand",
     "navigation.instant",
     "navigation.instant.progress",
     "navigation.footer",
@@ -76,6 +76,7 @@ scheme = "slate"
 toggle.icon = "lucide/moon"
 toggle.name = "Switch to light mode"
 
+[project.markdown_extensions.attr_list]
 [project.markdown_extensions.admonition]
 [project.markdown_extensions.pymdownx.details]
 [project.markdown_extensions.pymdownx.superfences]
