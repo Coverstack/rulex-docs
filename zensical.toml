@@ -86,3 +86,33 @@ auto_themed = true
 [project.markdown_extensions.zensical.extensions.macros]
 render_by_default = false
 on_error_fail = true
+
+[project.extra.consent]
+title = "Cookie consent"
+description = """
+    We use cookies to measure the effectiveness of our documentation and
+    whether users find what they're searching for.
+    With your consent, you're helping us to make our documentation better.
+"""
+
+[project.extra.analytics]
+provider = "google"
+property = "G-FFRGCY7XQW"
+
+[project.extra.analytics.feedback]
+title = "Was this page helpful?"
+
+[[project.extra.analytics.feedback.ratings]]
+icon = "material/emoticon-happy-outline"
+name = "This page was helpful"
+data = 1
+note = "Thanks for your feedback!"
+
+[[project.extra.analytics.feedback.ratings]]
+icon = "material/emoticon-sad-outline"
+name = "This page could be improved"
+data = 0
+note = """
+  Thanks for your feedback! Help us improve this page by
+  using our <a href="https://docs.google.com/forms/d/e/1FAIpQLSfHpMmVo7zvK-0X7ylBPYVkOaFex4rTT9GDeRx9J7KY6b7-cg/viewform?usp=pp_url&entry.934900454=Page+Title:+{title}%0APage+URL:+{url}%0A%0A" target="_blank" rel="noopener">feedback form</a>.
+"""

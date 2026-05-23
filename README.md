@@ -24,3 +24,7 @@ Add the formula name in alphabetical order in `docs/data/formulas.yaml`. The cou
 
 Architecture diagrams are hand-drawn in [Excalidraw](https://excalidraw.com). Source files are maintained in `excalidraw/`.
 Each diagram is exported as a light/dark SVG pair into `docs/assets/diagrams/`.
+
+## Feedback
+
+You can raise a new issue on github or use our [feedback form](https://forms.gle/UrHtUNHCrvW2yeM98) to help us improve the documentation.
