@@ -53,6 +53,7 @@ icon = "fontawesome/brands/linkedin"
 link = "https://www.linkedin.com/company/coverstack/"
 
 [project.theme]
+custom_dir = "overrides"
 features = [
     "navigation.path",
     "navigation.instant",
