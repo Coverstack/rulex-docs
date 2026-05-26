@@ -11,6 +11,18 @@ nav = [
         {"Overview" = "index.md"},
         {"Full Access Features" = "full-access-features.md"}
     ]},
+    {"Tutorial" = [
+        {"Introduction" = "tutorial/index.md"},
+        {"1. Data Source" = "tutorial/1-data-source.md"},
+        {"2. Schema" = "tutorial/2-schema.md"},
+        {"3. Endpoint" = "tutorial/3-endpoint.md"},
+        {"4. JSON API" = "tutorial/4-json-api.md"},
+        {"5. Data Validations" = "tutorial/5-validations.md"},
+        {"6. Fixed Inputs" = "tutorial/6-fixed-inputs.md"},
+        {"7. Web Form" = "tutorial/7-web-form.md"},
+        {"8. Tests" = "tutorial/8-tests.md"},
+        {"9. Ranges" = "tutorial/9-ranges.md"}
+    ]},
     {"Core Concepts" = [
         {"Organisation" = "concepts/organisation.md"},
         {"Data Sources" = "concepts/data-sources.md"},
