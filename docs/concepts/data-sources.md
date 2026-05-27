@@ -18,6 +18,10 @@ You can provide your model in two ways:
 Give the Source a name. If your model uses date or datetime values, set the timezone.
 The timezone controls how date and datetime inputs are interpreted when the model runs.
 
+!!! note
+    On [demo.rulex.coverstack.in](https://demo.rulex.coverstack.in/), the Excel file size is limited to **2.5 MB** for both options.
+    This covers the vast majority of use cases.
+
 ## Build status
 
 After you save a Data Source, RuleX compiles it in the background. The Data Sources
