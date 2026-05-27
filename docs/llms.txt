@@ -1,0 +1,49 @@
+# RuleX
+
+> RuleX turns Excel models into APIs. Upload a spreadsheet, map input and output cells, get a URL any application can call.
+
+The business logic stays in Excel. If the spreadsheet gives the right answer, the API gives the right answer. RuleX handles authentication, validation, type conversion, and hosting.
+
+## Getting Started
+
+- [Overview](https://docs.rulex.coverstack.in/): What RuleX is and how it works — upload a Data Source, define a Schema, create an Endpoint.
+- [Tutorial](https://docs.rulex.coverstack.in/tutorial/): Step-by-step walkthrough building a savings growth calculator: JSON API, data validations, fixed inputs, web form, tests, and array outputs.
+
+## Core Concepts
+
+- [Data Sources](https://docs.rulex.coverstack.in/concepts/data-sources/): An Excel file uploaded to RuleX. Immutable once created. Only static (non-formula) cells can be used as inputs. Supports `.xlsx` upload or Google Sheets import.
+- [Endpoint Schemas](https://docs.rulex.coverstack.in/concepts/endpoint-schemas/): Maps named fields to cells in a Data Source. Defines the API contract — which inputs consumers send and which outputs they receive. Supports scalar, range, and spill range output types.
+- [Endpoints](https://docs.rulex.coverstack.in/concepts/endpoints/): A URL path backed by a Schema. Operates in JSON API mode, Web Form mode, or both simultaneously. Returns HTTP 404 until the underlying Data Source finishes compiling.
+- [Organisation](https://docs.rulex.coverstack.in/concepts/organisation/): All RuleX resources (Data Sources, Schemas, Endpoints, team members) belong to an Organisation and are isolated from others. Each Organisation gets a unique domain.
+
+## Configuring Endpoints
+
+- [JSON API Mode](https://docs.rulex.coverstack.in/configuring/json-api-mode/): Accept POST requests from any HTTP client. Requires an API Config for the API key. Request body is JSON; response is JSON. Auth header: `X-API-Key: <key>`.
+- [API Config](https://docs.rulex.coverstack.in/configuring/api-config/): Holds the 64-character API key for JSON API Endpoints. One config can cover multiple Endpoints. Supports IP whitelisting.
+- [Web Form Mode](https://docs.rulex.coverstack.in/configuring/web-form-mode/): Expose an Endpoint as an HTML form in the browser. Full access feature. Requires Web Form Credentials.
+- [Web Form Credentials](https://docs.rulex.coverstack.in/configuring/web-form-credentials/): Username and password pairs that protect web form access. Full access feature. Separate from RuleX Admin accounts.
+- [Web Form Themes](https://docs.rulex.coverstack.in/configuring/web-form-themes/): Customise web form appearance using daisyUI themes. Full access feature. Supports separate light and dark variants.
+- [Fixed Inputs](https://docs.rulex.coverstack.in/fixed-inputs/): Values baked into an Endpoint at configuration time. Invisible to API consumers — they cannot see or override them. Useful for per-partner constants like commission rates or promotional rates.
+
+## Reference
+
+- [Data Validations](https://docs.rulex.coverstack.in/reference/data-validations/): RuleX enforces Excel Data Validation rules automatically. Invalid inputs are rejected before the model runs. JSON API returns HTTP 422 with field-level errors; web form shows inline errors. Supported types: whole number, decimal, list, date, text length, custom formula.
+- [Type Casting](https://docs.rulex.coverstack.in/reference/type-casting/): How RuleX converts between JSON types and Excel types. Inputs: Text, Integer, Decimal, Boolean, Date (ISO 8601), Date & Time (ISO 8601). Outputs: numbers, booleans, strings, dates, formula errors, and 2D arrays for ranges.
+- [Formula Errors](https://docs.rulex.coverstack.in/reference/formula-errors/): When an output cell contains a formula error (`#VALUE!`, `#DIV/0!`, `#REF!`, etc.), RuleX returns the error string in the response rather than failing the request.
+- [Supported Formulas](https://docs.rulex.coverstack.in/reference/supported-formulas/): Full list of Excel formulas RuleX can evaluate. All behave identically to Excel 2021. Unsupported formulas cause the Data Source build to fail.
+- [Excel Compatibility](https://docs.rulex.coverstack.in/reference/excel-compatibility/): RuleX follows Excel 2021 behaviour including dynamic arrays. Notes on differences when importing models from Google Sheets (ARRAYFORMULA not supported, FILTER syntax differs) or LibreOffice (CSE array formulas).
+
+## Self-Hosting
+
+- [Exporting Endpoints](https://docs.rulex.coverstack.in/self-hosting/exporting-endpoints/): Export JSON API Endpoints as a self-contained ZIP. Contains `server.py`, `rulex.zip` (Python package with WebAssembly modules), and a README. Self-contained — does not call back to RuleX servers. Suitable for air-gapped environments. Web Form Endpoints cannot be exported.
+- [Running the Server](https://docs.rulex.coverstack.in/self-hosting/running-the-server/): Run `uv run server.py` to start the HTTP server on port 8000. Demo exports compile modules on first request (cold start). `rulex.zip` can also be used as a Python library. Supports `x86_64-linux` and `aarch64-linux`.
+
+## Additional Features
+
+- [Endpoint Tests](https://docs.rulex.coverstack.in/endpoint-tests/): Upload an Excel file where each row is a test case. RuleX runs every row through the model and returns a results file with outputs appended. Full access feature.
+- [Team Management](https://docs.rulex.coverstack.in/team-management/): Invite members to your Organisation. Two access levels: Superuser (full access) and Non-superuser (granular permissions for Data Sources, Schemas, Endpoints, team, and organisation settings).
+- [Full Access Features](https://docs.rulex.coverstack.in/full-access-features/): Web Form Mode, Web Form Themes, Web Form Credentials, and Endpoint Tests require full hosted access. Contact support@coverstack.in to upgrade.
+
+## Architecture
+
+- [Architecture](https://docs.rulex.coverstack.in/architecture/): RuleX transpiles Excel formulas to Rust, compiles to WebAssembly, then AOT-compiles to native executables. Each request is fully isolated. Runtime uses Wasmer with LLVM backend. Caching hints (Forever, Today, Never) are returned alongside each calculation result.
